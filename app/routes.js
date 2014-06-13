@@ -1,7 +1,12 @@
 var Todo = require('./models/todo');
+//newly added
+var Mydata = require('./models/mydata');
+
 
 module.exports = function(app) {
 
+	//newly added
+	
 	// api ---------------------------------------------------------------------
 	// get all todos
 	app.get('/api/todos', function(req, res) {
@@ -13,8 +18,23 @@ module.exports = function(app) {
 			if (err)
 				res.send(err)
 
-			res.json(todos); // return all todos in JSON format
+			res.json({todos:todos, username: "stsrtaratr"}); // return all todos in JSON format
 		});
+		//newly added
+//		Mydata.find(function(err, mydata) {
+//
+//			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
+//			if (err)
+//				res.send(err)
+//
+//			res.json(mydata); // return all todos in JSON format
+//		});
+		
+		
+		
+		//above are newly added
+		
+		
 	});
 
 	// create todo and send back all todos after creation

@@ -1,5 +1,6 @@
 // set up ======================================================================
 var express  = require('express');
+//var angular = require('angular');
 var app      = express(); 								// create our app w/ express
 var mongoose = require('mongoose'); 					// mongoose for mongodb
 var port  	 = process.env.PORT || 8080; 				// set the port
@@ -16,6 +17,7 @@ app.configure(function() {
 });
 
 // routes ======================================================================
+//require('./public/js/controllers/demoCtrl2.js')
 require('./app/routes.js')(app);
 
 // listen (start app with node server.js) ======================================

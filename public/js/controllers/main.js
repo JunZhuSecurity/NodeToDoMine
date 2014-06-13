@@ -10,7 +10,7 @@ angular.module('todoController', [])
 		// use the service to get all the todos
 		Todos.get()
 			.success(function(data) {
-				$scope.todos = data;
+				$scope.todos = data; 
 				$scope.loading = false;
 			});
 

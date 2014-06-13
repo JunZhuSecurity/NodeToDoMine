@@ -1,5 +1,5 @@
 module.exports = {
 
 	// the database url to connect
-	url : 'mongodb://node:node@mongo.onmodulus.net:27017/uwO3mypu'
+	url : 'mongodb://10.64.247.69:27017/mytest'
 }

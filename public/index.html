@@ -1,7 +1,6 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <!-- ASSIGN OUR ANGULAR MODULE -->
-<html ng-app="scotchTodo">
+<html ng-app='scotchTodo'>
 <head>
 	<!-- META -->
 	<meta charset="utf-8">
@@ -12,11 +11,16 @@
 	<!-- SCROLLS -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	
+	
 	<style>
 		html 					{ overflow-y:scroll; }
 		body 					{ padding-top:50px; }
 		#todo-list 				{ margin-bottom:30px; }
 		#todo-form 	 			{ margin-bottom:50px; }
+		
+	
+        
 	</style>
 
 	<!-- SPELLS -->
@@ -26,15 +30,49 @@
 	<script src="js/services/todos.js"></script> <!-- load our todo service -->
 	<script src="js/core.js"></script> <!-- load our main application -->
 
+<!-- newly added -->
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+<!-- <script src="nv.d3.js"></script> or use another assembly
+<script src="angular-nvd3.js"></script>
+<link rel="stylesheet" type="text/css" href="../bower_components/nvd3/nv.d3.css"> -->
+
+
+<script src="charts/bar.js"></script>
 </head>
+
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
+   
+    <script src="js/services/d3.js"></script>
+    <script src="js/controllers/demoCtrl.js"></script>
+    <script src="js/controllers/demoCtrl2.js"></script>
+    <script src="js/directives/d3Basic.js"></script>
+    
+    
+<script src= "js/directives/wordcloud.js"></script>
+<script src = "js/controllers/wordcloudCtrl.js"></script>
+
+<script src= "js/directives/line-chart.min.js"></script>
+<script src = "js/controllers/line-chartCtrl.js"></script>
+
+<script src = "js/controllers/exampleCtrl.js"></script>
+
+<script src = "js/controllers/strippedAreaChartCtrl.js"></script>  
+<script src = "js/controllers/columnSeriesCtrl.js"></script> 
+
+<script src = "js/controllers/nvd3BarCtrl.js"></script> 
+
 <!-- SET THE CONTROLLER -->
 <body ng-controller="mainController">
+<!-- <body>
+<div ng-controller="mainController"> -->
 	<div class="container">
 
 		<!-- HEADER AND TODO COUNT -->
 		<div class="jumbotron text-center">
-			<h1>I'm a Todo-aholic <span class="label label-info">{{ todos.length }}</span></h1>
+			<h1>I'm a Todo-aholic <span class="label label-info">{{ todos.todos.length }}</span></h1>
 		</div>
+
 
 		<!-- TODO LIST -->
 		<div id="todo-list" class="row">
@@ -43,7 +81,7 @@
 				
 
 				<!-- LOOP OVER THE TODOS IN $scope.todos -->
-				<div class="checkbox" ng-repeat="todo in todos">
+				<div class="checkbox" ng-repeat="todo in todos.todos">
 					<label>
 						<input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
 					</label>
@@ -71,8 +109,92 @@
 				</form>
 			</div>
 		</div>
+	
+		<!--newly added-->
+		
+ <!--    <div ng-controller='nvd3BarCtrl'>
+        <nvd3 options='options' data='data'></nvd3>
+    </div> -->
 
+		
+		<!-- above is the test for nvd3 -->
+<div class="row">
+      <div class="col-md-6 col-md-offset-3" ng-controller="DemoCtrl">
+        <span>{{title}}</span>
+        <span>{{todos.username}}</span>
+        <d3-bars data="d3Data" label="name" on-click="d3OnClick(item)"></d3-bars>
+        <br>
+        <br>
+        <span>First Item</span>
+        <input type="text" ng-model="d3Data[0].score"></input>
+        <br>
+        <span>Second Item</span>
+        <input type="text" ng-model="d3Data[1].score"></input>
+        <br>
+        <span>Third Item</span>
+        <input type="text" ng-model="d3Data[2].score"></input>
+      </div>
+    </div>
+    
+    
+    <!-- newly added-->
+<!--     <div class="row">
+      <div class="col-md-6 col-md-offset-3" ng-controller="wordcloudCtrl">
+<wordcloud
+  words="words"
+  on-click="myOnClickFunction(element)"
+  on-hover="myOnHoverFunction(element)">
+</wordcloud>
+</div>
+</div> -->
+    
+    
+        
+        
+        <!-- <span>First Item</span>
+        <input type="text" ng-model="d3Data[0].score"></input>
+        <br>
+        <span>Second Item</span>
+        <input type="text" ng-model="d3Data[1].score"></input>
+        <br>
+        <span>Third Item</span>
+        <input type="text" ng-model="d3Data[2].score"></input>
+      </div> -->
+      
+  <!-- newly added --> 
+    <div ng-controller="columnSeriesCtrl" >
+  <linechart data="example" options="options" mode = ""></linechart>
+</div>
+  
+    <div ng-controller="ExampleCtrl" style="width:600px;">
+  <linechart data="data" options="options"></linechart>
+</div>
+<br>
+<!--newly added -->
+
+<div ng-controller="line-chartCtrl" style="width:600px;">
+<span>hi hi hi h</span>
+<linechart data="data" options="options" mode="" ></linechart>
+</div>
+
+<br>
+<div ng-controller="strippedAreaChartCtrl" style="width:600px;">
+<span>hi str</span>
+<linechart data="data" options="options" mode="" ></linechart>
+</div>
+
+<br>
+<div class="row">
+      <div class="col-md-6 col-md-offset-3"><hr></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3" ng-controller="DemoCtrl2">
+        <span>{{title}}</span>
+        <d3-bars data="d3Data" label="title"></d3-bars>
+        <br>
+        <br>
 		<div class="text-center text-muted">
+		<p>A demo by <a href="bar.html">barhtml</a>.</p>
 			<p>A demo by <a href="http://scotch.io">Scotch</a>.</p>
 			<p>Read the <a href="http://scotch.io/tutorials/javascript/creating-a-single-page-todo-app-with-node-and-angular">tutorial</a>.</p>
 		</div>
