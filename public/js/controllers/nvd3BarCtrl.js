@@ -1,4 +1,4 @@
-angular.module('todoController', ['nvd3'])
+angular.module('nvdexample', ['nvd3'])
        .controller('nvd3BarCtrl', function('$scope'){
            //$scope.options = { /* JSON data */ };
           // $scope.data = { /* JSON data */ }

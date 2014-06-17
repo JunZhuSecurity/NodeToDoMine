@@ -53,20 +53,19 @@
 <script src = "js/controllers/wordcloudCtrl.js"></script>
 
 <script src= "js/directives/line-chart.min.js"></script>
-<script src = "js/controllers/line-chartCtrl.js"></script>
 
 <script src = "js/controllers/exampleCtrl.js"></script>
 
 <script src = "js/controllers/strippedAreaChartCtrl.js"></script>  
 <script src = "js/controllers/columnSeriesCtrl.js"></script> 
 
-<script src = "js/controllers/nvd3BarCtrl.js"></script> 
+<!-- <script src = "js/controllers/nvd3BarCtrl.js"></script>  -->
 
 <!-- SET THE CONTROLLER -->
-<body ng-controller="mainController">
+<body>
 <!-- <body>
 <div ng-controller="mainController"> -->
-	<div class="container">
+	<div class="container" ng-controller="mainController">
 
 		<!-- HEADER AND TODO COUNT -->
 		<div class="jumbotron text-center">
@@ -109,7 +108,7 @@
 				</form>
 			</div>
 		</div>
-	
+	</div>
 		<!--newly added-->
 		
  <!--    <div ng-controller='nvd3BarCtrl'>
@@ -170,15 +169,12 @@
   <linechart data="data" options="options"></linechart>
 </div>
 <br>
-<!--newly added -->
 
-<div ng-controller="line-chartCtrl" style="width:600px;">
-<span>hi hi hi h</span>
-<linechart data="data" options="options" mode="" ></linechart>
-</div>
+
+
 
 <br>
-<div ng-controller="strippedAreaChartCtrl" style="width:600px;">
+<div ng-controller="strippedAreaChartCtrl">
 <span>hi str</span>
 <linechart data="data" options="options" mode="" ></linechart>
 </div>

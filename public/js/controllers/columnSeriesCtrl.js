@@ -1,5 +1,5 @@
 //from http://n3-charts.github.io/line-chart/#/examples
-angular.module('example', ['n3-line-chart'])
+angular.module('example')
   .controller('columnSeriesCtrl', function($scope) {
 	  $scope.example = [
 	                    {x: 0, val_0: 0, val_1: 0, val_2: 0, val_3: 0},
