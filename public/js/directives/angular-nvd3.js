@@ -2,9 +2,7 @@
 * AngularJS-nvD3, v0.0.8; MIT License; 06/11/2014 23:23
 * http://krispo.github.io/angular-nvd3
 **************************************************************************/
-!(function(){
 
-    'use strict';
 
     angular.module('nvd3', [])
 
@@ -311,4 +309,3 @@
                 }
             };
         }]);
-})();

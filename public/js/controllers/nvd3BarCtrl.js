@@ -43,4 +43,4 @@ angular.module('nvdexample', ['nvd3'])
                    { "label" : "H" , "value" : -5.1387322875705 }
                ]
            }]
-        })
+        });

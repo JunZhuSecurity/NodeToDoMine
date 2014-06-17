@@ -13,6 +13,9 @@
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 	
 	
+	<link rel="stylesheet" href="./../bower_components/bootstrap/docs/assets/css/bootstrap.css"/>
+	<link rel="stylesheet" href="./../bower_components/bootstrap/docs/assets/css/bootstrap-responsive.css"/>
+	
 	<style>
 		html 					{ overflow-y:scroll; }
 		body 					{ padding-top:50px; }
@@ -33,9 +36,9 @@
 <!-- newly added -->
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
-<!-- <script src="nv.d3.js"></script> or use another assembly
-<script src="angular-nvd3.js"></script>
-<link rel="stylesheet" type="text/css" href="../bower_components/nvd3/nv.d3.css"> -->
+<script src="nv.d3.js"></script> 
+<script src="js/directives/angular-nvd3.js"></script>
+<link rel="stylesheet" type="text/css" href="../bower_components/nvd3/nv.d3.css">
 
 
 <script src="charts/bar.js"></script>
@@ -58,8 +61,10 @@
 
 <script src = "js/controllers/strippedAreaChartCtrl.js"></script>  
 <script src = "js/controllers/columnSeriesCtrl.js"></script> 
-
+<script src = "js/directives/bars.js"></script> 
 <!-- <script src = "js/controllers/nvd3BarCtrl.js"></script>  -->
+
+<script src = "js/controllers/tableCtrl.js"></script>
 
 <!-- SET THE CONTROLLER -->
 <body>
@@ -111,7 +116,7 @@
 	</div>
 		<!--newly added-->
 		
- <!--    <div ng-controller='nvd3BarCtrl'>
+  <!--   <div ng-controller='nvd3BarCtrl'>
         <nvd3 options='options' data='data'></nvd3>
     </div> -->
 
@@ -180,6 +185,10 @@
 </div>
 
 <br>
+<div>
+    <bars data="40,4,55,15,16,33,52,20,30,3900,399"></bars>
+</div>
+<br>
 <div class="row">
       <div class="col-md-6 col-md-offset-3"><hr></div>
     </div>
@@ -197,5 +206,42 @@
 
 	</div>
 
+<!-- newly added -->
+<div class="container-fluid" ng-controller="tableCtrl">
+		<div class="row-fluid">
+			<span class="offset1 span2">
+				<input type="text" ng-model="name"/>
+			</span>
+			<span class="span2">Hello, {{name}}</span>
+		</div>
+
+		<div class="row-fluid">
+			<span class="offset1 span1"><strong>Filter: </strong></span>
+			<input class="span2" type="text" ng-model="wordFilter"/>
+		</div>
+		<div class="row-fluid">
+			<div class="offset1 span10">
+				<table class="table table-bordered table-striped table-hover">
+					<thead>
+						<tr>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Country</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="person in persons | filter:wordFilter">
+							<td>{{person.FirstName}}</td>
+							<td>{{person.LastName}}</td>
+							<td>{{person.Country}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+</div>
+<br>
+<br>
+<span>test</span>>
 </body>
 </html>
