@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Ember Timetree by CrowdStrike</title>
+  <link rel="stylesheet" href="css/bootstrap-combined.min.css">
+  <link rel="stylesheet" href="css/timetree_basic.css">
+  <link rel="stylesheet" href="css/timetree_chrome_devtools.css">
+  <style>
+    html, body {
+      margin: 40px;
+    }
+    header, #app {
+      margin-bottom: 60px;
+    }
+    .title a {
+      color: #333333;
+    }
+    .logo {
+      margin-left: 2px;
+    }
+    .label {
+      margin-left: 20px;
+    }
+    .timetree-view {
+      margin: 20px;
+      display: block;
+    }
+    .timetree-view .label {
+      text-shadow: none;
+    }
+    .example-selection {
+      font-style: italic;
+    }
+    .invisible {
+      visibility: none;
+    }
+    
+    //newly added
+    table {
+  border-collapse: collapse;
+}
+th {
+  border-bottom: 2px solid #ddd;
+  padding: 8px;
+  font-weight: bold;
+}
+td {
+  padding: 8px;
+  border-top: 1px solid #ddd;
+}
+#chart {
+  padding: 0px;
+}
+.xaxislabel {
+  font-size: 9px;
+}
+  </style>
+  
+  ///newly added
+  <title>Table With Embedded Line Chart</title>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<link rel="stylesheet" href="http://billmill.org/css/style.css" />
+<style>
+table {
+  border-collapse: collapse;
+}
+th {
+  border-bottom: 2px solid #ddd;
+  padding: 8px;
+  font-weight: bold;
+}
+td {
+  padding: 8px;
+  border-top: 1px solid #ddd;
+}
+#chart {
+  padding: 0px;
+}
+.xaxislabel {
+  font-size: 9px;
+}
+</style>
+  
+</head>
+<body>
+
+    <h1 class="title">PayPal Tracer</h1>
+      <h3>Search Box</h3>
+<form name = "search" action = "" method = "get">
+Start Date <input type = "text" name = "startdate"><br>
+End Date <input type = "text" name = "enddate"><br>
+Cluster <select name = "clusterid">
+<option value = "1">1
+<option value = "1">2
+<option value = "1">3
+</select><br>
+Job <select name = "jobid">
+<option value = "1">1
+<option value = "1">2
+<option value = "1">3
+</select><br>
+Node Information<br>
+<input type = "checkbox" name = "nodeinfo" value = "RPC">RPC or Span name<br>
+<input type = "checkbox" name = "nodeinfo" value = "Job">Job<br>
+Cost Metric<br>
+<input type = "radio" name = "metric" value ="latency">Latency<br>
+<input type = "radio" name = "metric" value = "responseSize">ResponseSize<br>
+<input type = "submit" value = "submit"><br>
+</form>
+
+  <div id="app"></div>
+  
+<p>
+  <script type="text/x-handlebars" data-template-name="index">
+    
+
+      
+  
+
+    <div class="example">
+      <h3>Results with Brush View</h3>
+
+      <figcaption>
+        <p>
+          You can also bind to the selected item in the hierarchy via the
+          <code>selectionBinding</code> attribute. <strong>Try clicking</strong> on an item in the main view.
+        </p>
+      </figcaption>
+
+      <p {{bindAttr class=":label :label-info selectedEvents2::invisible"}}>
+        You selected the event named <span class="example-selection">{{ selectedEvents2.firstObject.label }}</span>.
+      </p>
+
+      {{view Ember.Timetree.TimetreeView contentBinding="App.ApiData" selectionBinding="selectedEvents2" rangeBinding="eventsRange_example2"}}
+      {{view Ember.Timetree.TimetreeBrushView contentBinding="App.ApiData" brushRangeBinding="eventsRange_example2"}}
+    </div>
+
+    
+  </script>
+  <p>
+  middle line</p>
+<script>
+</p>
+<p>
+var rows = []
+var formatdate = d3.time.format("%b %d %Y");
+
+d3.csv("dortmund.csv", function(error, csv) {
+  csv.forEach(function(row) {
+    row.mu = parseFloat(row.mu).toFixed(1);
+    row.sigma = parseFloat(row.sigma).toFixed(1);
+    row.dt = formatdate(new Date(Date.parse(row.date)));
+
+    var res = parseFloat(row.result);
+    if (res < .5) {
+      row.result = "loss";
+    } else if (res > .5) {
+      row.result = "win";
+    } else {
+      row.result = "draw";
+    }
+    
+    rows.push(row);
+  });
+
+  var table = d3.select("#datatable").append("table");
+      thead = table.append("thead");
+      tbody = table.append("tbody");
+
+  thead.append("th").text("Date");
+  thead.append("th").text("Opponent");
+  thead.append("th").text("Result");
+  thead.append("th").text("Rating");
+  thead.append("th").text("");
+
+  var tr = tbody.selectAll("tr")
+      .data(rows)
+      .enter().append("tr");
+
+  var td = tr.selectAll("td")
+        .data(function(d) { return [d.dt, d.opp, d.result, d.mu]; })
+      .enter().append("td")
+        .text(function(d) { return d; });
+
+  var width = 80,
+      height = d3.select("table")[0][0].clientHeight,
+      mx = 10,
+      radius = 2;
+
+  // Now add the chart column
+  d3.select("#datatable tbody tr").append("td")
+    .attr("id", "chart")
+    .attr("width", width + "px")
+    .attr("rowspan", rows.length);
+
+  var chart = d3.select("#chart").append("svg")
+      .attr("class", "chart")
+      .attr("width", width)
+      .attr("height", height);
+
+  var maxMu = 0;
+  var minMu = Number.MAX_VALUE;
+  for (i=0; i < rows.length; i++) {
+    if (rows[i].mu > maxMu) { maxMu = rows[i].mu; }
+    if (rows[i].mu < minMu) { minMu = rows[i].mu; }
+  }
+
+  var dates = rows.map(function(t) { return t.dt; });
+
+  var xscale = d3.scale.linear()
+    .domain([minMu, maxMu])
+    .range([mx, width-mx])
+    .nice();
+
+  var yscale = d3.scale.ordinal()
+    .domain(dates)
+    .rangeBands([0, height]);
+
+  chart.selectAll(".xaxislabel")
+      .data(xscale.ticks(2))
+    .enter().append("text")
+      .attr("class", "xaxislabel")
+      .attr("x", function(d) { return xscale(d); })
+      .attr("y", 10)
+      .attr("text-anchor", "middle")
+      .text(String)
+
+  chart.selectAll(".xaxistick")
+      .data(xscale.ticks(2))
+    .enter().append("line")
+      .attr("x1", function(d) { return xscale(d); })
+      .attr("x2", function(d) { return xscale(d); })
+      .attr("y1", 10)
+      .attr("y2", height)
+      .attr("stroke", "#eee")
+      .attr("stroke-width", 1);
+
+  chart.selectAll(".line")
+      .data(rows)
+    .enter().append("line")
+      .attr("x1", function(d) { return xscale(d.mu); })
+      .attr("y1", function(d) { return yscale(d.dt) + yscale.rangeBand()/2; })
+      .attr("x2", function(d,i) { return rows[i+1] ? xscale(rows[i+1].mu) : xscale(d.mu); })
+      .attr("y2", function(d,i) { return rows[i+1] ? yscale(rows[i+1].dt) + yscale.rangeBand()/2 : yscale(d.dt) + yscale.rangeBand()/2; })
+      .attr("stroke", "#777")
+      .attr("stroke-width", 1);
+
+  var pt = chart.selectAll(".pt")
+      .data(rows)
+    .enter().append("g")
+      .attr("class", "pt")
+      .attr("transform", function(d) { return "translate(" + xscale(d.mu) + "," + (yscale(d.dt) + yscale.rangeBand()/2) + ")"; });
+
+  pt.append("circle")
+      .attr("cx", 0)
+      .attr("cy", 0)
+      .attr("r", radius)
+      .attr("opacity", .5)
+      .attr("fill", "#ff0000");
+
+});
+</script>
+</p>
+
+  <p>
+  end line</p>
+
+  <script src="jquery.min.js"></script>
+  <script src="handlebars.min.js"></script>
+  <script src="ember.min.js"></script>
+  <script src="d3.min.js"></script>
+  <script src="ember-timetree.min.js"></script>
+
+  <!-- Not required. Just for demo. -->
+  <script src="app.js"></script>
+
+</body>
+</html>

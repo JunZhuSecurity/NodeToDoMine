@@ -16,9 +16,18 @@
 	<link rel="stylesheet" href="./../bower_components/bootstrap/docs/assets/css/bootstrap.css"/>
 	<link rel="stylesheet" href="./../bower_components/bootstrap/docs/assets/css/bootstrap-responsive.css"/>
 	
+	<link rel="stylesheet" href="css/treeMap.css"/>
+	
+	<!-- newly added June 1 -->
+	<!-- <link rel="stylesheet" href="css/bootstrap-combined.min.css">
+  <link rel="stylesheet" href="css/timetree_basic.css">
+  <link rel="stylesheet" href="css/timetree_chrome_devtools.css">
+  <link rel="stylesheet" href="css/emberTreeEx.css"> -->
+  
+  
 	<style>
 		html 					{ overflow-y:scroll; }
-		body 					{ padding-top:50px; }
+		body 					{ padding-top:500px; }
 		#todo-list 				{ margin-bottom:30px; }
 		#todo-form 	 			{ margin-bottom:50px; }
 		
@@ -175,7 +184,14 @@
 </div>
 <br>
 
-
+<!-- newly added -->
+<div>
+<form>
+  <label><input type="radio" name="mode" value="size" checked> Size</label>
+  <label><input type="radio" name="mode" value="count"> Count</label>
+</form>
+<script src = "js/controllers/treeMap.js"></script>
+</div>
 
 
 <br>
@@ -184,11 +200,14 @@
 <linechart data="data" options="options" mode="" ></linechart>
 </div>
 
+
+
 <br>
 <div>
     <bars data="40,4,55,15,16,33,52,20,30,3900,399"></bars>
 </div>
 <br>
+
 <div class="row">
       <div class="col-md-6 col-md-offset-3"><hr></div>
     </div>

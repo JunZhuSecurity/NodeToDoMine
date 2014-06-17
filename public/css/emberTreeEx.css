@@ -1,0 +1,28 @@
+html, body {
+      margin: 40px;
+    }
+    header, #app {
+      margin-bottom: 60px;
+    }
+    .title a {
+      color: #333333;
+    }
+    .logo {
+      margin-left: 2px;
+    }
+    .label {
+      margin-left: 20px;
+    }
+    .timetree-view {
+      margin: 20px;
+      display: block;
+    }
+    .timetree-view .label {
+      text-shadow: none;
+    }
+    .example-selection {
+      font-style: italic;
+    }
+    .invisible {
+      visibility: none;
+    }
