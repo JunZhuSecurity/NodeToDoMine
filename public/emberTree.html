@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>TimeTree</title>
+  <link rel="stylesheet" href="js/ember-timetree/css/bootstrap-combined.min.css">
+  <link rel="stylesheet" href="js/ember-timetree/css/timetree_basic.css">
+  <link rel="stylesheet" href="js/ember-timetree/css/timetree_chrome_devtools.css">
+  <link rel="stylesheet" href="js/ember-timetree/css/emberTreeEx.css">
+ <!--  <style>
+    html, body {
+      margin: 40px;
+    }
+    header, #app {
+      margin-bottom: 60px;
+    }
+    .title a {
+      color: #333333;
+    }
+    .logo {
+      margin-left: 2px;
+    }
+    .label {
+      margin-left: 20px;
+    }
+    .timetree-view {
+      margin: 20px;
+      display: block;
+    }
+    .timetree-view .label {
+      text-shadow: none;
+    }
+    .example-selection {
+      font-style: italic;
+    }
+    .invisible {
+      visibility: none;
+    } -->
+
+ <!--  </style> -->
+ 
+<!--   <title>Table With Embedded Line Chart</title>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<link rel="stylesheet" href="http://billmill.org/css/style.css" />
+<style>
+table {
+  border-collapse: collapse;
+}
+th {
+  border-bottom: 2px solid #ddd;
+  padding: 8px;
+  font-weight: bold;
+}
+td {
+  padding: 8px;
+  border-top: 1px solid #ddd;
+}
+#chart {
+  padding: 0px;
+}
+.xaxislabel {
+  font-size: 9px;
+}
+</style> -->
+  <script src="js/ember-timetree/jquery.min.js"></script>
+  <script src="js/ember-timetree/handlebars.min.js"></script>
+  <script src="js/ember-timetree/ember.min.js"></script>
+  <script src="js/ember-timetree/d3.min.js"></script>
+  <script src="js/ember-timetree/ember-timetree.min.js"></script>
+
+  <!-- Not required. Just for demo. -->
+  <script src="js/ember-timetree/app.js"></script>
+</head>
+<body>
+
+  <div id="app"></div>
+  
+<p>
+  <script type="text/x-handlebars" data-template-name="index">
+     <div class="example">
+      <h3>Results with Brush View</h3>
+
+      <figcaption>
+        <p>
+           <strong>Try clicking</strong> on an item in the main view.
+        </p>
+      </figcaption>
+
+      <p {{bindAttr class=":label :label-info selectedEvents2::invisible"}}>
+        You selected the event named <span class="example-selection">{{ selectedEvents2.firstObject.label }}</span>.
+      </p>
+
+      {{view Ember.Timetree.TimetreeView contentBinding="App.ApiData" selectionBinding="selectedEvents2" rangeBinding="eventsRange_example2"}}
+      {{view Ember.Timetree.TimetreeBrushView contentBinding="App.ApiData" brushRangeBinding="eventsRange_example2"}}
+    </div>
+
+    
+  </script>
+  
+  
+  </body></html>

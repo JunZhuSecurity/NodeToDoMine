@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app='scotchTodo'>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,9 +20,57 @@
 
 <!-- newly added -->
 <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<link href = "http://www.eyecon.ro/bootstrap-datepicker/css/datepicker.css" rel = "stylesheet">
-<script src = "http://www.eyecon.ro/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<link href = "css/datepicker.css" rel = "stylesheet">
+<script src = "js/bootstrap-datepicker.js"></script>
 
+<!-- newly added -->
+
+	<!-- SCROLLS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	
+	
+	<link rel="stylesheet" href="./../bower_components/bootstrap/docs/assets/css/bootstrap.css"/>
+	<link rel="stylesheet" href="./../bower_components/bootstrap/docs/assets/css/bootstrap-responsive.css"/>
+	
+	
+	<!-- SPELLS -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+
+	<script src="js/controllers/main.js"></script> <!-- load up our controller -->
+	<script src="js/services/todos.js"></script> <!-- load our todo service -->
+	<script src="js/core.js"></script> <!-- load our main application -->
+
+<!-- newly added -->
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+<script src="nv.d3.js"></script> 
+<script src="js/directives/angular-nvd3.js"></script>
+<link rel="stylesheet" type="text/css" href="../bower_components/nvd3/nv.d3.css">
+
+
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
+   
+    <script src="js/services/d3.js"></script>
+    <script src="js/controllers/demoCtrl.js"></script>
+    <script src="js/controllers/demoCtrl2.js"></script>
+    <script src="js/directives/d3Basic.js"></script>
+    
+    
+<script src= "js/directives/wordcloud.js"></script>
+<script src = "js/controllers/wordcloudCtrl.js"></script>
+
+<script src= "js/directives/line-chart.min.js"></script>
+
+<script src = "js/controllers/exampleCtrl.js"></script>
+
+<script src = "js/controllers/strippedAreaChartCtrl.js"></script>  
+<script src = "js/controllers/columnSeriesCtrl.js"></script> 
+<script src = "js/directives/bars.js"></script> 
+<!-- <script src = "js/controllers/nvd3BarCtrl.js"></script>  -->
+
+<script src = "js/controllers/tableCtrl.js"></script>
+</head>
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -32,7 +80,7 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
+
 
   <body>
 
@@ -117,33 +165,6 @@
           }).on('changeDate', function(ev) {
             checkout.hide();
           }).data('datepicker');
-			
-
-        // disabling dates
-        /* var nowTemp = new Date();
-        var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
-
-        var startdate = $('#dpd1').datepicker({
-          onRender: function(date) {
-            return date.valueOf() > now.valueOf() ? 'disabled' : '';
-          }
-        }).on('changeDate', function(ev) {
-          if (ev.date.valueOf() > enddate.date.valueOf()) {
-            var newDate = new Date(ev.date)
-            newDate.setDate(newDate.getDate() + 1);
-            enddate.setValue(newDate);
-          }
-          startdate.hide();
-          $('#dpd2')[0].focus();
-        }).data('datepicker');
-        var enddate = $('#dpd2').datepicker({
-          onRender: function(date) {
-            return date.valueOf() <= startdate.date.valueOf() ? 'disabled' : '';
-          }
-        }).on('changeDate', function(ev) {
-          enddate.hide();
-        }).data('datepicker'); */
-		
 	</script>
 
 <tr>
@@ -175,16 +196,42 @@ Cost Metric<br>
            
            <!-- <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p> -->
         </div>
-        <div class="col-md-10">
+        <div class="col-md-8">
           <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+      
+      <div  ng-controller="DemoCtrl">
+        <d3-bars data="d3Data" label="name" on-click="d3OnClick(item)"></d3-bars>
+        <br>
+        <span>Third Item</span>
+      </div>
+
+    
+    
+         
+          
+          
+          <!-- <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p> -->
        </div>
-       <!--  <div class="col-md-4">
+        <div class="col-md-8" ng-controller="columnSeriesCtrl">
+          <h2>Heading</h2>
+          
+           <!-- newly added --> 
+  
+  <linechart data="example" options="options" mode = ""></linechart>
+
+
+
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        
+         <div class="col-md-8">
           <h2>Heading</h2>
           <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
           <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-        </div> -->
+        </div>
+        
       </div>
 
       <hr>

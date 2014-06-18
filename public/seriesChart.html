@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app='scotchTodo'>
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>Node/Angular Todo App</title>
+
+	<!-- SCROLLS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	
+	
+	<link rel="stylesheet" href="./../bower_components/bootstrap/docs/assets/css/bootstrap.css"/>
+	<link rel="stylesheet" href="./../bower_components/bootstrap/docs/assets/css/bootstrap-responsive.css"/>
+	
+	<link rel="stylesheet" href="css/treeMap.css"/>
+	
+	<link rel="stylesheet" href="css/treeEx.css"/>
+	
+	<!-- newly added June 1 -->
+	<!-- <link rel="stylesheet" href="css/bootstrap-combined.min.css">
+  <link rel="stylesheet" href="css/timetree_basic.css">
+  <link rel="stylesheet" href="css/timetree_chrome_devtools.css">
+  <link rel="stylesheet" href="css/emberTreeEx.css"> -->
+  
+  
+	<style>
+		html 					{ overflow-y:scroll; }
+		body 					{ padding-top:50px; }
+		#todo-list 				{ margin-bottom:30px; }
+		#todo-form 	 			{ margin-bottom:50px; }
+		
+	
+        
+	</style>
+
+	<!-- SPELLS -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+
+	<script src="js/controllers/main.js"></script> <!-- load up our controller -->
+	<script src="js/services/todos.js"></script> <!-- load our todo service -->
+	<script src="js/core.js"></script> <!-- load our main application -->
+
+<!-- newly added -->
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+<script src="nv.d3.js"></script> 
+<script src="js/directives/angular-nvd3.js"></script>
+<link rel="stylesheet" type="text/css" href="../bower_components/nvd3/nv.d3.css">
+
+
+<script src="charts/bar.js"></script>
+</head>
+
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
+   
+    <script src="js/services/d3.js"></script>
+    <script src="js/controllers/demoCtrl.js"></script>
+    <script src="js/controllers/demoCtrl2.js"></script>
+    <script src="js/directives/d3Basic.js"></script>
+    
+    
+<script src= "js/directives/wordcloud.js"></script>
+<script src = "js/controllers/wordcloudCtrl.js"></script>
+
+<script src= "js/directives/line-chart.min.js"></script>
+
+<script src = "js/controllers/exampleCtrl.js"></script>
+
+<script src = "js/controllers/strippedAreaChartCtrl.js"></script>  
+<script src = "js/controllers/columnSeriesCtrl.js"></script> 
+<script src = "js/directives/bars.js"></script> 
+<!-- <script src = "js/controllers/nvd3BarCtrl.js"></script>  -->
+
+<script src = "js/controllers/tableCtrl.js"></script>
+
+<!-- SET THE CONTROLLER -->
+<body>
+<!-- <body>
+<div ng-controller="mainController"> -->
+		<!--newly added-->
+		
+  <!--   <div ng-controller='nvd3BarCtrl'>
+        <nvd3 options='options' data='data'></nvd3>
+    </div> -->
+
+		
+		<!-- above is the test for nvd3 -->
+<!-- <div class="row">
+      <div class="col-md-6 col-md-offset-3" ng-controller="DemoCtrl">
+        <span>{{title}}</span>
+        <span>{{todos.username}}</span>
+        <d3-bars data="d3Data" label="name" on-click="d3OnClick(item)"></d3-bars>
+        <br>
+        <br>
+        <span>First Item</span>
+        <input type="text" ng-model="d3Data[0].score"></input>
+        <br>
+        <span>Second Item</span>
+        <input type="text" ng-model="d3Data[1].score"></input>
+        <br>
+        <span>Third Item</span>
+        <input type="text" ng-model="d3Data[2].score"></input>
+      </div>
+    </div> -->
+    
+    
+    <!-- newly added-->
+<!--     <div class="row">
+      <div class="col-md-6 col-md-offset-3" ng-controller="wordcloudCtrl">
+<wordcloud
+  words="words"
+  on-click="myOnClickFunction(element)"
+  on-hover="myOnHoverFunction(element)">
+</wordcloud>
+</div>
+</div> -->
+    
+    
+        
+        
+        <!-- <span>First Item</span>
+        <input type="text" ng-model="d3Data[0].score"></input>
+        <br>
+        <span>Second Item</span>
+        <input type="text" ng-model="d3Data[1].score"></input>
+        <br>
+        <span>Third Item</span>
+        <input type="text" ng-model="d3Data[2].score"></input>
+      </div> -->
+      
+  <!-- newly added --> 
+<!--     <div ng-controller="columnSeriesCtrl" >
+  <linechart data="example" options="options" mode = ""></linechart>
+</div> -->
+  
+    <div ng-controller="ExampleCtrl" style="width:600px;">
+  <linechart data="data" options="options"></linechart>
+</div>
+<br>
+
+<!-- newly added -->
+<!-- <div>
+<form>
+  <label><input type="radio" name="mode" value="size" checked> Size</label>
+  <label><input type="radio" name="mode" value="count"> Count</label>
+</form>
+<script src = "js/controllers/treeMap.js"></script>
+</div> -->
+
+<!-- newly added -->
+<!-- <div>
+<script src = "js/controllers/tree.js"></script>
+<div>
+
+<div>
+<script src = "js/controllers/sortableBar.js"></script>
+</div> -->
+
+
+
+
+
+<!-- <br>
+<div>
+    <bars data="40,4,55,15,16,33,52,20,30,3900,399"></bars>
+</div>
+<br> -->
+
+
+
+<br>
+<span>test</span>>
+</body>
+</html>
