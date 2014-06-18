@@ -1,0 +1,42 @@
+
+<html ng-app='scotchTodo'>
+
+<meta charset="utf-8">
+<head>
+<style>
+
+body {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.area {
+  fill: steelblue;
+}
+
+</style>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+<script src="js/services/todos.js"></script> <!-- load our todo service -->
+<script src="js/core.js"></script> <!-- load our main application -->
+<script src = "js/controllers/main.js"></script>
+<script src="http://d3js.org/d3.v3.js"></script>
+<script src = "js/directives/areaChart.js"></script>
+<script src = "js/controllers/areaChartCtrl.js"></script>
+
+</head>
+<body>
+<p>test</p>
+
+<div ng-controller = "areaChartCtrl">
+<crD3Bars data = "data"></crD3Bars>
+</div>
+
+</script>
+</body>
+</html>
