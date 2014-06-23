@@ -3,15 +3,23 @@
 <html>
 <head>
     <title>Angular.js nvd3.js Line Chart Directive</title>
-    <meta http-equiv="content-type" content="text/html; charset=UTF8">
-        
-    <script src="external/javascripts/vendor/angular.js"></script>
-    <script src="external/javascripts/vendor/d3.js"></script>
-    <script src="external/javascripts/vendor/nv.d3.js"></script>
-    <script src="external/javascripts/vendor/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>
-    <link rel="stylesheet" href="external/stylesheets/nv.d3.css"/>
+     <meta http-equiv="content-type" content="text/html; charset=UTF8">
+    <script src="external/javascripts/vendor/angularjs-nvd3-directives/examples/js/angular.js"></script>
+    <script src="external/javascripts/vendor/angularjs-nvd3-directives/examples/js/d3.js"></script>
+    <script src="external/javascripts/vendor/angularjs-nvd3-directives/examples/js/nv.d3.js"></script>
+    <script src="external/javascripts/vendor/angularjs-nvd3-directives/examples/js/moment.js"></script>
+                      <script src="external/javascripts/vendor/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>
+    <link rel="stylesheet" href="external/javascripts/vendor/angularjs-nvd3-directives/examples/stylesheets/nv.d3.css"/>
+    	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+
+	<script src="js/controllers/main.js"></script> <!-- load up our controller -->
+	<script src="js/services/todos.js"></script> <!-- load our todo service -->
+	<script src="js/core.js"></script> <!-- load our main application -->
+	
+	
+	<script src = "js/controllers/sparklineChartCtrl.js"></script>
     
-    <script>
+  <!--   <script>
         var app = angular.module("nvd3TestApp", ['nvd3ChartDirectives']);
 
         function ExampleCtrl($scope){
@@ -30,12 +38,12 @@
             }
 
         }
-    </script>
+    </script> -->
 
 </head>
 <body ng-app='nvd3TestApp'>
 
-<div ng-controller="ExampleCtrl">
+<div ng-controller="sparklineChartCtrl">
     <nvd3-sparkline-chart
             data="exampleData"
             id="exampleId"

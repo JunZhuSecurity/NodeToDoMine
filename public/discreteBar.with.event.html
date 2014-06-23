@@ -4,6 +4,18 @@
 <head>
     <title>Angular.js nvd3.js Line Chart Directive</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF8">
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+
+	<script src="js/controllers/main.js"></script> <!-- load up our controller -->
+	<script src="js/services/todos.js"></script> <!-- load our todo service -->
+	<script src="js/core.js"></script> <!-- load our main application -->
+
+<!-- newly added -->
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+   
+   
+    <script src="js/controllers/discreteBarCtrl.js"></script> <!-- load up our controller -->
+    
     
     
   <script src="external/javascripts/vendor/angular.js"></script>
@@ -15,9 +27,9 @@
     
     
     <script>
-        var app = angular.module("nvd3TestApp", ['nvd3ChartDirectives']);
+        //var app = angular.module("nvd3TestApp", ['nvd3ChartDirectives']);
 
-        function ExampleCtrl($scope){
+        /* function discreteBarCtrl($scope){
             $scope.exampleData = [
                 {
                     key: "Cumulative Return",
@@ -42,13 +54,13 @@
                 console.log('scope.tooltipHide', event);
             });
 
-        }
+        } */
     </script>
 
 </head>
 <body ng-app='nvd3TestApp'>
 
-<div ng-controller="ExampleCtrl">
+<div ng-controller="discreteBarCtrl">
     <nvd3-discrete-bar-chart
             data="exampleData"
             id="exampleId"

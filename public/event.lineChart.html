@@ -3,6 +3,30 @@
 <html>
 <head>
     <title>Angular.js nvd3.js Line Chart Directive</title>
+    <!-- newly added -->
+    	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+
+	<script src="js/controllers/main.js"></script> <!-- load up our controller -->
+	<script src="js/services/todos.js"></script> <!-- load our todo service -->
+	<script src="js/core.js"></script> <!-- load our main application -->
+
+<!-- newly added -->
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+<script src="nv.d3.js"></script> 
+<script src="js/directives/angular-nvd3.js"></script>
+<link rel="stylesheet" type="text/css" href="../bower_components/nvd3/nv.d3.css">
+
+
+<script src="charts/bar.js"></script>
+</head>
+
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.min.js"></script>
+   
+    <script src="js/services/d3.js"></script>
+    
+    <script src="js/controllers/discreteBarCtrl.js"></script> <!-- load up our controller -->
+    
     <meta http-equiv="content-type" content="text/html; charset=UTF8">
     <script src="external/javascripts/vendor/angular.js"></script>
     <script src="external/javascripts/vendor/d3.js"></script>
@@ -11,7 +35,9 @@
     
     <link rel="stylesheet" href="external/stylesheets/nv.d3.css"/>
     
-    <script>
+    <script src = "js/controllers/eventLineChartCtrl.js"></script>
+    
+    <!-- <script>
         var app = angular.module("nvd3TestApp", ['nvd3ChartDirectives']);
 
         function ExampleCtrl($scope){
@@ -45,12 +71,12 @@
             });
 
         }
-    </script>
+    </script> -->
 
 </head>
 <body ng-app='nvd3TestApp'>
 
-<div ng-controller="ExampleCtrl">
+<div ng-controller="eventLineChartCtrl">
     <nvd3-line-chart
         data="exampleData"
         width="400"

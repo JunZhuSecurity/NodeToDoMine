@@ -1,6 +1,8 @@
 
 angular.module('scotchTodo', ['todoController', 'todoService', 'example']);//, 'myApp.directives', 'd3']);
 
+angular.module("nvd3TestApp", ['nvd3ChartDirectives']);
+ 
 
 //(function () {
 //	  'use strict';

@@ -3,14 +3,27 @@
 <html>
 <head>
     <title>Angular.js nvd3.js Multi Bar Horizontal Chart Directive</title>
-    <meta http-equiv="content-type" content="text/html; charset=UTF8">
-    <script src="js/angular.js"></script>
-    <script src="js/d3.js"></script>
-    <script src="js/nv.d3.js"></script>
-    <script src="../dist/angularjs-nvd3-directives.js"></script>
-    <link rel="stylesheet" href="stylesheets/nv.d3.css"/>
+   <meta http-equiv="content-type" content="text/html; charset=UTF8">
+    <script src="external/javascripts/vendor/angularjs-nvd3-directives/examples/js/angular.js"></script>
+    <script src="external/javascripts/vendor/angularjs-nvd3-directives/examples/js/d3.js"></script>
+    <script src="external/javascripts/vendor/angularjs-nvd3-directives/examples/js/nv.d3.js"></script>
+    <script src="external/javascripts/vendor/angularjs-nvd3-directives/examples/js/moment.js"></script>
+                      <script src="external/javascripts/vendor/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>
+    <link rel="stylesheet" href="external/javascripts/vendor/angularjs-nvd3-directives/examples/stylesheets/nv.d3.css"/>
+    	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+
+	<script src="js/controllers/main.js"></script> <!-- load up our controller -->
+	<script src="js/services/todos.js"></script> <!-- load our todo service -->
+	<script src="js/core.js"></script> <!-- load our main application -->
+
+<!-- newly added -->
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="external/javascripts/vendor/nv.d3.js"></script> 
+<script src="js/directives/angular-nvd3.js"></script>
+
+<script src="js/controllers/multiBarHorizontalChartCtrl.js"></script>
     <script>
-        var app = angular.module("nvd3TestApp", ['nvd3ChartDirectives']);
+       /*  var app = angular.module("nvd3TestApp", ['nvd3ChartDirectives']);
 
         function ExampleCtrl($scope){
             $scope.exampleData = [
@@ -46,13 +59,13 @@
                 }
             ];
 
-        }
+        } */
     </script>
 
 </head>
 <body ng-app='nvd3TestApp'>
 
-<div ng-controller="ExampleCtrl">
+<div ng-controller="multiBarHorizontalChartCtrl">
     <nvd3-multi-bar-horizontal-chart
             data="exampleData"
             id="exampleId"
